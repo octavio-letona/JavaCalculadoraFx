@@ -54,7 +54,12 @@ public class CalculadoraController {
             operador = entrada;
             actualizarPantalla(pantalla);
         } 
-
+                 
+                else if (entrada.equals("^")) {
+            operador = entrada;
+            actualizarPantalla(pantalla);
+        } 
+ 
            
         else if (entrada.equals("=")) {
             if (operador.equals("+")) {
@@ -77,6 +82,9 @@ public class CalculadoraController {
                 opcion1 = resultadoPorcentaje(opcion1, opcion2);
             }
     
+             else if (operador.equals("^")) {
+                opcion1 = resultadoPotencia(opcion1, opcion2);
+            }
     
 
             
@@ -168,6 +176,15 @@ private String resultadoRaizCuadrada(String numeroUno) {
         double porcentaje = datoUno * datoDos;
         double resultporcentaje = porcentaje / 100;
         return resultado = String.valueOf(resultporcentaje);
+    }
+  
+   private String resultadoPotencia(String numeroUno, String numeroDos) {
+        String resultado;
+        double datoUno = Integer.parseInt(numeroUno);
+        double datoDos = Integer.parseInt(numeroDos);
+        double potencia = Math.pow(datoUno, datoDos);
+
+        return resultado = String.valueOf(potencia);
     }
 
 }
