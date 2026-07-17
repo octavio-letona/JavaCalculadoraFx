@@ -7,7 +7,7 @@ package org.octavioletona.system;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+// import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.octavioletona.view.CalculadoraView;
 
@@ -23,7 +23,12 @@ public class Principal extends Application {
     public static void main(String[] args) {
         System.out.println("hola mundo");
         launch(args);
+        
+        
+        
     }
+    
+    
 
     @Override
     public void start(Stage escenarioPrincipal) throws Exception {
@@ -41,5 +46,6 @@ public class Principal extends Application {
        escenarioPrincipal.show();
        
     }
+    
     
 }
