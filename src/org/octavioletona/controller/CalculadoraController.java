@@ -50,6 +50,18 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         } 
         
+                   else if (entrada.equals("+") || entrada.equals("*")  || entrada.equals("√"))  {
+      if (entrada.equals("√") || !opcion1.isEmpty()) {
+            operador = entrada;
+        }
+    }
+//                   else if (entrada.equals("=")) {
+//        resultadoRaizCuadrada();
+//    }
+//    
+//    actualizarPantalla(pantalla);
+//}
+           
         else if (entrada.equals("=")) {
             if (operador.equals("+")) {
                 opcion1 = resultadoSuma(opcion1, opcion2);
@@ -60,6 +72,9 @@ public class CalculadoraController {
             }
             else if (operador.equals("/")) {
                 opcion1 = resultadoDivision(opcion1, opcion2);
+            }
+            else if (operador.equals("√")) {
+                opcion1 = resultadoRaizCuadrada(opcion1);
             }
             operador = "";
             opcion2 = "";
@@ -114,5 +129,11 @@ public class CalculadoraController {
         return resultado = String.valueOf(division);
     }
 
- 
+private String resultadoRaizCuadrada(String numeroUno) {
+    String resultado;
+    double datoUno = Integer.parseInt(numeroUno); 
+    double raiz = Math.sqrt(datoUno);
+    return resultado = String.valueOf(raiz);
+}
+  
 }
