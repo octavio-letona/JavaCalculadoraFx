@@ -91,7 +91,7 @@ public class CalculadoraView {
     private Button nuevoBoton (String texto){
         Button btn = new Button(texto);
         btn.setPrefSize(50, 50);
-        btn.setStyle("-fx-background-color:#6BBE23; -fx-text-fill:white; -ft-background-radius:5px; -fx-cursor: hand;");
+        btn.setStyle("-fx-background-color:#6BBE23; -fx-text-fill:white; -ft-background-radius:10px; -fx-cursor: hand;");
         
                     btn.setOnMousePressed(e -> {
             btn.setStyle("-fx-background-color: #4c700b; -fx-text-fill: white;");
@@ -111,7 +111,7 @@ public class CalculadoraView {
      private Button nuevoBotonOperacion (String texto){
         Button btn = new Button(texto);
         btn.setPrefSize(50, 50);
-        btn.setStyle("-fx-background-color:#c9c53a; -fx-text-fill:white; -ft-background-radius:5px; -fx-cursor: hand;");
+        btn.setStyle("-fx-background-color:#c9c53a; -fx-text-fill:white; -ft-background-radius:20px; -fx-cursor: hand;");
         
                     btn.setOnMousePressed(e -> {
             btn.setStyle("-fx-background-color: #8f8c28; -fx-text-fill: white;");
