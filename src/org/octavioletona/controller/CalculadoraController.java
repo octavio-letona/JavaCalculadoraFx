@@ -50,7 +50,7 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         } 
         
-                 else if (entrada.equals("/") || entrada.equals("√")) {
+                 else if (entrada.equals("%") || entrada.equals("√")) {
             operador = entrada;
             actualizarPantalla(pantalla);
         } 
@@ -71,11 +71,15 @@ public class CalculadoraController {
                 opcion1 = resultadoRaizCuadrada(opcion1);
                 String numeroParaRaiz = opcion1.isEmpty() ? opcion2 : opcion1;
                 opcion1 = resultadoRaizCuadrada(numeroParaRaiz);
-  
+                
+            }    
+            else if (operador.equals("%")) {
+                opcion1 = resultadoPorcentaje(opcion1, opcion2);
+            }
     
     
 
-            }
+            
             operador = "";
             opcion2 = "";
             calculoTerminado = true;
@@ -157,4 +161,13 @@ private String resultadoRaizCuadrada(String numeroUno) {
     return String.valueOf(estimacion);
 }
   
+  private String resultadoPorcentaje(String numeroUno, String numeroDos) {
+        String resultado;
+        double datoUno = Integer.parseInt(numeroUno);
+        double datoDos = Integer.parseInt(numeroDos);
+        double porcentaje = datoUno * datoDos;
+        double resultporcentaje = porcentaje / 100;
+        return resultado = String.valueOf(resultporcentaje);
+    }
+
 }
