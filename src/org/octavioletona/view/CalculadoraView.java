@@ -26,27 +26,28 @@ public class CalculadoraView {
         view = new VBox(15);
         view.setPadding(new Insets (15));
         view.setAlignment(Pos.CENTER);
-        view.setStyle("-fx-background-color: #cbd3d4;");
+        view.setStyle("-fx-background-color: #F4F1DE;");
         
         pantalla = new Label("0");
         pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 40));
         pantalla.setAlignment(Pos.CENTER_RIGHT);
         pantalla.setPrefSize(235, 50);
-
+        pantalla.setStyle("-fx-background-color: #f0f0f5;");
+        
         cuadroBotones = new GridPane();
         cuadroBotones.setHgap(12);
         cuadroBotones.setVgap(12);
         cuadroBotones.setAlignment(Pos.CENTER);
         
         // primer boton
-        Button btnPunto = nuevoBotonOperacion (".");
+        Button btnPunto = nuevoBoton (".");
         Button btnCero = nuevoBoton("0");
         Button btnUno = nuevoBoton("1");
         Button btnDos = nuevoBoton("2");
         Button btnTres = nuevoBoton("3");
         Button btnMas = nuevoBotonOperacion ("+");
-        Button btnIgual = nuevoBotonOperacion ("=");
-        Button btnClear = nuevoBotonOperacion ("C");
+        Button btnIgual = nuevoBotonOperacion2 ("=");
+        Button btnClear = nuevoBotonOperacion2 ("C");
         Button btnCuatro = nuevoBoton("4");
         Button btnCinco = nuevoBoton("5");
         Button btnSeis = nuevoBoton("6");
@@ -57,8 +58,8 @@ public class CalculadoraView {
         Button btnNueve = nuevoBoton("9");
         Button btnDivision = nuevoBotonOperacion ("/");
         Button btnRaizCua = nuevoBotonOperacion ("√");
-        
-        
+        Button btnPorcentaje = nuevoBotonOperacion ("%");
+        Button btnPotencia = nuevoBotonOperacion ("^");
         
         cuadroBotones.add(btnPunto, 2, 4);
         cuadroBotones.add(btnCero, 1, 4);
@@ -78,8 +79,8 @@ public class CalculadoraView {
         cuadroBotones.add(btnMultiplicacion, 3, 1);
         cuadroBotones.add(btnDivision, 3, 0);
         cuadroBotones.add(btnRaizCua, 2, 0);
-        
-        
+        cuadroBotones.add(btnPorcentaje, 1, 0);     
+        cuadroBotones.add(btnPotencia, 0, 0);     
         view.getChildren().addAll(pantalla, cuadroBotones);
     }
    
@@ -90,16 +91,17 @@ public class CalculadoraView {
     
     private Button nuevoBoton (String texto){
         Button btn = new Button(texto);
+        
         btn.setPrefSize(50, 50);
-        btn.setStyle("-fx-background-color:#6BBE23; -fx-text-fill:white; -ft-background-radius:10px; -fx-cursor: hand;");
+        btn.setStyle("-fx-background-color:#E07A5F; -fx-text-fill:white; -ft-background-radius:10px; -fx-cursor: hand; -fx-font-size-: 20px;");
         
                     btn.setOnMousePressed(e -> {
-            btn.setStyle("-fx-background-color: #4c700b; -fx-text-fill: white;");
+            btn.setStyle("-fx-background-color: #6461ab; -fx-text-fill: white;  -fx-font-size-: 20px;");
             btn.setTranslateY(2);
     }); 
 
         btn.setOnMouseReleased(e -> {
-         btn.setStyle("-fx-background-color:#6BBE23; -fx-text-fill: white;");
+         btn.setStyle("-fx-background-color:#E07A5F; -fx-text-fill: white;  -fx-font-size-: 20px;");
          btn.setTranslateY(0);
     });
         
@@ -111,7 +113,7 @@ public class CalculadoraView {
      private Button nuevoBotonOperacion (String texto){
         Button btn = new Button(texto);
         btn.setPrefSize(50, 50);
-        btn.setStyle("-fx-background-color:#c9c53a; -fx-text-fill:white; -ft-background-radius:20px; -fx-cursor: hand;");
+        btn.setStyle("-fx-background-color:#3D405B; -fx-text-fill:white; -ft-background-radius:20px; -fx-cursor: hand;");
         
                     btn.setOnMousePressed(e -> {
             btn.setStyle("-fx-background-color: #8f8c28; -fx-text-fill: white;");
@@ -119,7 +121,28 @@ public class CalculadoraView {
     }); 
 
         btn.setOnMouseReleased(e -> {
-         btn.setStyle("-fx-background-color:#c9c53a; -fx-text-fill: white;");
+         btn.setStyle("-fx-background-color:#3D405B; -fx-text-fill: white;");
+         btn.setTranslateY(0);
+    });
+        
+       btn.setOnAction(e -> controlador.procesoDeEntrada(texto,  pantalla) );
+        return btn;
+    
+    }    
+     
+     
+          private Button nuevoBotonOperacion2 (String texto){
+        Button btn = new Button(texto);
+        btn.setPrefSize(50, 50);
+        btn.setStyle("-fx-background-color:#81B29A; -fx-text-fill:white; -ft-background-radius:20px; -fx-cursor: hand;");
+        
+                    btn.setOnMousePressed(e -> {
+            btn.setStyle("-fx-background-color: #8f8c28; -fx-text-fill: white;");
+            btn.setTranslateY(2);
+    }); 
+
+        btn.setOnMouseReleased(e -> {
+         btn.setStyle("-fx-background-color:#81B29A; -fx-text-fill: white;");
          btn.setTranslateY(0);
     });
         
