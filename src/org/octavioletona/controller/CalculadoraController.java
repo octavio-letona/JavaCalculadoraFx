@@ -50,17 +50,11 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         } 
         
-                   else if (entrada.equals("+") || entrada.equals("*")  || entrada.equals("√"))  {
-      if (entrada.equals("√") || !opcion1.isEmpty()) {
+                 else if (entrada.equals("/") || entrada.equals("√")) {
             operador = entrada;
-        }
-    }
-//                   else if (entrada.equals("=")) {
-//        resultadoRaizCuadrada();
-//    }
-//    
-//    actualizarPantalla(pantalla);
-//}
+            actualizarPantalla(pantalla);
+        } 
+
            
         else if (entrada.equals("=")) {
             if (operador.equals("+")) {
@@ -75,6 +69,12 @@ public class CalculadoraController {
             }
             else if (operador.equals("√")) {
                 opcion1 = resultadoRaizCuadrada(opcion1);
+                String numeroParaRaiz = opcion1.isEmpty() ? opcion2 : opcion1;
+                opcion1 = resultadoRaizCuadrada(numeroParaRaiz);
+  
+    
+    
+
             }
             operador = "";
             opcion2 = "";
@@ -130,10 +130,31 @@ public class CalculadoraController {
     }
 
 private String resultadoRaizCuadrada(String numeroUno) {
-    String resultado;
-    double datoUno = Integer.parseInt(numeroUno); 
-    double raiz = Math.sqrt(datoUno);
-    return resultado = String.valueOf(raiz);
+    if (numeroUno == null || numeroUno.isEmpty()) {
+        return ""; 
+    }
+    double numero = Double.parseDouble(numeroUno);
+    if (numero < 0) {
+        return "Error";
+    }
+    if (numero == 0) {
+        return "0.0";
+    }
+    double estimacion = numero;
+    double estimacionAnterior = 0;
+    double tolerancia = 0.000001;
+    while (true) {
+        estimacionAnterior = estimacion;
+        estimacion = (estimacion + (numero / estimacion)) / 2.0;
+        double diferencia = estimacion - estimacionAnterior;
+        if (diferencia < 0) {
+            diferencia = diferencia * -1; 
+        }
+        if (diferencia < tolerancia) {
+            break;
+        }
+    }
+    return String.valueOf(estimacion);
 }
   
 }
