@@ -22,3 +22,5 @@ Enlace de video
         -(sugerido)OBS - grabar - microfono
         -presente su calculadora funcionando
         -presente la estructura de su codigo.
+        enlace video:
+        https://drive.google.com/file/d/1dKj88nr141qUe9UUtBN1a2WJBM4UqMpj/view?usp=sharing
